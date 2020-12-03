@@ -9,9 +9,22 @@
 
 <body>
 
-    <textarea rows="15" cols="60" id="textInput">one two one tree four five six</textarea>
+    <textarea rows="15" cols="60" id="textInput">One Fish, Two Fish, Red Fish, Blue Fish By Dr. Seuss
+One fish Two fish Red fish Blue fish.
+Black fish Blue fish Old fish New fish.
+This one has a little star. This one has a little car. Say! What a lot
+Of fish there are.
+Yes. Some are red. And some are blue. Some are old. And some are new.
+Some are sad.
+And some are very, very bad.
+Why are they Sad and glad bad? I do not know.
+Go ask your dad.
+Some are thin. And some are fato. The fat one has A yellow hat.
+From there to here, from here to there, Funny things
+Are everywhere.
+Here are some Who like to run. They run for fun In the hot, hot sun.</textarea>
     <br />
-    <button id="countButton" onclick="verifica()">Count Frequencies</button>
+    <button id="countButton" onclick="verifica();">Count Frequencies</button>
 
 
 
@@ -30,10 +43,17 @@
 transformar texto em array;
 fazer busca por array e contar
 -->
-
+<style>
+    #lettersDiv,
+    #wordsDiv {
+        border: 1px black solid;
+        height: 300px;
+    }
+</style>
 <script>
     function verifica() {
-        let texto = document.getElementById("textInput").innerHTML; //pegou string
+
+        let texto = document.getElementById("textInput").value; //pegou string
         texto = texto.toLowerCase().replace(/[^a-z'\s]+/g, "").split(" ");
 
         let palavra = [];
@@ -45,8 +65,23 @@ fazer busca por array e contar
         let bom = palavra.filter(function(item) {
             return palavra.hasOwnProperty(item) ? false : (palavra[item] = true);
         });
-
-        console.log(bom);
         document.getElementById("wordsDiv").innerText = bom;
+
+        //ok
+
+
+        let letras = document.getElementById("textInput").value;
+        letras = letras.toLowerCase().replace(/[^a-z'\s]+/g, "").split("");
+
+        let arrayLetras = [];
+
+        for (let i = 0; i < letras.length; i++) {
+            let quantas = letras.filter(num => num === letras[i]).length;
+            arrayLetras.push([letras[i], quantas]);
+        }
+        let ok = arrayLetras.filter(function(item) {
+            return arrayLetras.hasOwnProperty(item) ? false : (arrayLetras[item] = true);
+        });
+        document.getElementById("lettersDiv").innerText = ok;
     }
 </script>
