@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <textarea rows="15" cols="60" id="textInput">one two one tree four five six</textarea>
+    <br />
+    <button id="countButton" onclick="verifica()">Count Frequencies</button>
+
+
+
+
+
+</body>
+
+</html>
+
+
+
+
+<div id="lettersDiv"></div>
+<div id="wordsDiv"></div>
+<!-- fazer
+transformar texto em array;
+fazer busca por array e contar
+-->
+
+<script>
+    function verifica() {
+        let texto = document.getElementById("textInput").innerHTML; //pegou string
+        texto = texto.toLowerCase().replace(/[^a-z'\s]+/g, "").split(" ");
+
+        let palavra = [];
+
+        for (let i = 0; i < texto.length; i++) {
+            let quantas = texto.filter(num => num === texto[i]).length;
+            palavra.push([texto[i], quantas]);
+        }
+        let bom = palavra.filter(function(item) {
+            return palavra.hasOwnProperty(item) ? false : (palavra[item] = true);
+        });
+
+        console.log(bom);
+        document.getElementById("wordsDiv").innerText = bom;
+    }
+</script>
